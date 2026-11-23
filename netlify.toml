@@ -1,0 +1,13 @@
+[build]
+  command   = "pip install -r requirements.txt"
+  publish   = "static"
+  functions = "netlify/functions"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"
+
+# Send every request to the Flask serverless function
+[[redirects]]
+  from   = "/*"
+  to     = "/.netlify/functions/server"
+  status = 200
